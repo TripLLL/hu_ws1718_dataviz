@@ -1,0 +1,285 @@
+---
+title: "rvis 13"
+author: "Lisa Reiber"
+date: "25 1 2018"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+##Load Packages and Data
+```{r, results=F, message=F, echo=FALSE}
+#### install missing packages and load needed packages ####
+#install.packages("devtools")
+#devtools::install_github("dkahle/ggmap")
+devtools::install_github("hadley/ggplot2@v2.2.0") 
+
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(sp, rgdal, ggmap, cowplot, rvest, tmap, tidyverse )      
+
+#### load dataset ####
+death <- readRDS("data/Death")
+pump <- readRDS("data/Pump")
+```
+
+##Daten angucken
+```{r}
+str(death)
+str(pump)
+```
+
+##Get Maps
+```{r}
+#
+snow.map.ggl <- readRDS("data/snowmapggl")
+
+#Google Map
+# snow.map.ggl <- get_map(
+      #             location = "London",
+      #             zoom = 16,
+      #             # wie groß soll der ausschnitt sein? 3 = Kontinent 21= building
+      #             source = "google",
+      #             maptype = "terrain"
+      # )
+      
+# Stamen Map
+snow.map.stm <- get_map("Soho, London",
+                        zoom = 16, 
+                        maptype = "terrain", 
+                        source = "stamen")
+
+berlin.map <- get_map("Mitte, Berlin",
+                        zoom = 16, 
+                        maptype = "terrain", 
+                        source = "stamen")
+
+snow.map.osm <- get_map("Soho, London",
+                        zoom = 16, 
+                        #maptype = "terrain", 
+                        source = "osm")
+
+bb.map <- get_map("Brandenburg",
+                        zoom = 7, 
+                        maptype = "terrain", 
+                        source = "stamen")
+ggmap(snow.map.stm)
+```
+
+## anzeigen lassen
+```{r}
+gg.map.ggl <- ggmap(snow.map.ggl)
+gg.map.stm <- ggmap(snow.map.stm)
+gg.map.brln <- ggmap(berlin.map)
+gg.map.bb   <- ggmap(bb.map)
+
+# Kombinieren und plotten (cowplot)
+plots <- list(gg.map.ggl, gg.map.stm, gg.map.brln) 
+plots
+
+# CloudMade evtl interessant
+
+# mit cowplot
+plot_grid(plotlist = plots, ncol = 2, labels = c("Google Maps", "Stamen Maps", "Berlin Map"))
+```
+
+##weitere Layer hinzufügen
+```{r John Snow Map}
+gg.map.ggl +          # Basiskarte
+  geom_point(data = death, aes(x = lon, y = lat, size = count), 
+             alpha = 0.5) +   # Layer für Todesfälle
+  geom_point(data = pump, aes(x = lon, y = lat), 
+             color = "red", stroke = 3, shape = 4, alpha = 0.7) +   # Layer für Pumpen
+  theme_void() +      # theme_void, um Achsenbeschriftung zu vermeiden
+  labs(title = "Reproduction of John Snow's Cholera Map",
+       size = "Cholera Deaths",
+       caption = "Data: https://blog.rtwilson.com/john-snows-cholera-data-in-more-formats/")           # Titel, Caption
+```
+## Adressen Geokodieren
+```{r}
+# Query limit = 2,500 (a day)
+ISW <- geocode(location = "Universitaetsstr. 3b, Berlin", source = "google")
+home <- geocode(location = "Birkenstr. 11, Berlin", source = "google")
+# The other way aroung
+revgeocode(location = c(ISW$lon, ISW$lat), source = "google", output = "address")
+revgeocode(location = c(home$lon, home$lat), source = "google", output = "address")
+```
+ 
+## Adresse zu Map hinzufügen
+```{r}
+gg.map.brln +          # Basiskarte
+  geom_point(data = home, aes(x = lon, y = lat), 
+             alpha = 0.5, stroke = 3) +   # Layer für Home
+ 
+  theme_void() +      # theme_void, um Achsenbeschriftung zu vermeiden
+  labs(title = "Who Lives Here?")           # Titel, Caption
+```
+
+## Shapefiles
+```{r}
+library(rgdal)
+library(magrittr)
+library(broom)
+bb.shp <- readOGR(dsn = "data/envvk9q3g/DE_BB_Mroad_Lnight.shp", layer = "DE_BB_Mroad_Lnight")
+
+bb.fshp <- tidy(bb.shp)
+ 
+bb.shp@proj4string@projargs
+
+# Plot map and overlay with shapefile
+ggmap(bb.map) +
+  geom_point(data = bb.fshp, mapping = aes(x = long, y = lat, group = group),
+               color = "blue", fill = "black", alpha = .4)
+```
+
+## 1.Feb Maps II
+```{r}
+germany <- get_map(location = "Germany",
+                   zoom = 6,
+                   maptype = "toner",
+                   source = "stamen")
+
+germany <- readRDS("data/GermanMap")
+```
+
+Have a first look
+```{r}
+ger.map <- ggmap(germany)
+ger.map
+```
+
+Katre laden und als kontext Layer verwenden
+```{r}
+# Scrapen
+city <- read_html("https://de.wikipedia.org/wiki/Land_(Deutschland)") %>%
+  html_nodes(css = "table.wikitable:nth-child(22)") %>%
+  html_table() %>%
+  .[[1]] %>%
+  .[-17,-1]
+
+# Stadtnamen ergänzen
+city[c(3, 5, 6), "Hauptstadt"] <- c("Berlin", "Bremen", "Hamburg")
+
+# Daten in numerische Werte umwandeln
+city.df <- city %>%
+  mutate_at(vars(`Ein-wohner(Mio.)[12]`,`Ausländer(%)[13]` ),
+            .funs = funs(as.numeric(stringr::str_replace_all(string = ., pattern = ",", replacement = "\\."))))
+
+# Variablennamen
+colnames(city.df) <- c("Land", "Kürzel", "Hauptstadt", "Beitritt", "Regierung", "Parteien",
+                       "Stimmen", "Fläche", "Einwohner", "EinwDichte", "Ausländeranteil", "Sprachen")
+
+
+```
+
+Daten räumlich machen
+```{r}
+# General logic for geocoding
+geocode(location = "Stuttgart", output = "latlon", source = "google", inject = ", Germany")
+```
+
+Für viele Städte
+```{r}
+# Um nicht über das query limit zu kommen, nehmt lieber den Datensatz aus dem Kurs
+
+# Wrap into a loop
+# Create variables beforehand
+city.df$lon <- NA
+city.df$lat <- NA
+
+# for loop with if-condition for warnings
+# run several times until no more NA's are returned
+for(i in 1:nrow(city.df)) {
+  if (is.na(city.df$lon[i])) {
+    result <- tryCatch(geocode(city.df$Hauptstadt[i], output = "latlon", source = "google", inject = ", Germany"),
+                       warning = function(x) data.frame(lon = NA, lat = NA))
+    city.df$lon[i] <- as.numeric(result[1])
+    city.df$lat[i] <- as.numeric(result[2])
+  }
+  i <- i + 1
+  Sys.sleep(sample(seq(.5, 2, 0.5), 1))  
+}
+```
+
+Ausläneranteil darstellen 
+```{r}
+ger.map +
+  geom_point(data = city.df, mapping = aes(x = lon, y = lat, size = Ausländeranteil), color = "gold2", alpha = .5)
+
+```
+geht auch mit ggmap
+```{r}
+bl.shp <- readOGR(dsn = "data/VG250_BL_2017",
+                  use_iconv = TRUE, encoding = "UTF-8", stringsAsFactors = FALSE)
+```
+cleaning
+```{r}
+# Zwei Bundesländer umbennen (für später)
+bl.shp@data$GEN[bl.shp@data$GEN == "Baden-Württemberg (Bodensee)"] <- "Baden-Württemberg"
+bl.shp@data$GEN[bl.shp@data$GEN == "Bayern (Bodensee)"] <- "Bayern"
+
+# (2) ggfortify
+bl.for <- fortify(bl.shp)
+```
+ plot it
+```{r}
+ger.map +
+  geom_polygon(data = bl.for, mapping = aes(x = long, y = lat, fill = id),
+               color = "blue", fill = "black", alpha = .4)
+
+plot(bl.shp )
+```
+ 
+
+Shapefile angucken
+```{r}
+typeof(bl.shp)
+
+class(bl.shp)
+
+str(bl.shp, max.level = 2) # useful args: max.level & list.len
+str(bl.shp@data, max.level = 2, list.len = 3)
+str(bl.shp@polygons, max.level = 2, list.len = 3)
+str(bl.shp@plotOrder)
+str(bl.shp@bbox)
+str(bl.shp@proj4string) # http://proj4.org/projections/index.html
+listviewer::jsonedit(bl.shp)
+```
+
+
+
+using tmap 
+```{r}
+library(tmap)
+tm_shape(shp = bl.shp) +
+  tm_polygons()
+
+
+
+```
+mergen
+```{r}
+bl.shp <- sp::merge(bl.shp, city.df, by.x = "GEN", by.y = "Land")
+
+# Auch Seegebiete entfernen (indexing)
+bl.shp <- bl.shp[bl.shp@data$GF != 1,] 
+
+```
+
+TMap stellt daten zur Verfügung
+WHOOOOOP
+```{r}
+data(Europe)
+
+glimpse(Europe@data)
+
+tm_shape(Europe)+
+      tm_polygons(col = "gdp_cap_est", style = "quantile")
+```
+
+
+
+
+
+
+

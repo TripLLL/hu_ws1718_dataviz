@@ -1,0 +1,92 @@
+---
+title: "Visa Network Data"
+author: "Lisa Reiber"
+date: "4 11 2017"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r visa, message=FALSE}
+#Get Data
+visa.df <- readRDS(file = "data/VisaNetworkData_041017")
+#Load Packages
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(tidyverse) 
+```
+
+# Question 1
+In the session, we already learned that mobility rights (variable: indegree) are unequally distributed among continents (continent). We can check once more using the following code:
+
+```{r q1, results = 'hide', message=FALSE}
+arrange(summarize(group_by(visa.df, continent), mean = mean(indegree), n()), desc(mean))
+```
+
+## Answer 1:
+```{r code 1 answer, message=TRUE}
+visa.df %>% 
+      group_by(continent) %>% 
+      dplyr:: summarize(mean = mean(indegree), n()) %>% 
+      arrange(desc(mean)) %>% 
+      as.data.frame()
+```
+\newpage
+
+# Question 2
+Recode the variable gdppc into deciles. Then group the data by this variable and compute the mean indegree. Are gdppc and indegree related? You can also check the correlation between the variables (?cor)
+
+*Hints:
+Have a look at the function ntile or cut (rather go with ntile; it is easier).
+Try to remove the missing values beforehand !is.na()*
+
+## Answer 2:
+```{r 2}
+# data cleaning and description
+      visa.df %>% 
+            filter(!is.na(gdppc) & !is.na(indegree)) %>% 
+            mutate(dezgdp = ntile(gdppc, 10)) %>% 
+            group_by(dezgdp) %>% 
+            dplyr:: summarize(mean.indegree = mean(indegree), 
+                cor.gdp.indegree = cor(gdppc, indegree), n()) 
+```
+
+```{r 2b}
+# Correlation of GDP per Capita and Number of Visa Waivers Granted
+      visa.df %>% 
+            filter(!is.na(gdppc) & !is.na(indegree)) %>%
+            dplyr::summarize(cor.gdp.indegree = cor(gdppc, indegree), n = n()) %>% 
+            as.data.frame()
+```
+
+## Extra: Plotting the relation
+```{r}
+# scatter plot by deziles
+
+visa.df <- visa.df %>% 
+            filter(!is.na(gdppc) & !is.na(indegree)) %>%
+            mutate(dezgdp = ntile(gdppc, 10))
+
+ggplot(visa.df, aes(x = gdppc , 
+                 y = indegree, 
+                 color = continent)) +
+      geom_point() + 
+      scale_y_continuous(name = "Number of Visa Waivers Granted") +
+      scale_x_continuous(name = "GDP per capita") +
+      facet_grid(~dezgdp)
+
+# scatterplot overall
+ggplot(visa.df, aes(x = gdppc , 
+                 y = indegree, 
+                 color = continent)) +
+      geom_point() + 
+      geom_text(data = subset(visa.df, gdppc > 50000), 
+                aes(gdppc, indegree, label=name)) +
+      scale_y_continuous(name = "Number of Visa Waivers Granted") +
+      scale_x_continuous(name = "GDP per capita") +
+      geom_smooth(method=lm,  
+                  linetype="dashed")
+```
+
+

@@ -1,0 +1,1254 @@
+/* line 5, ../../app/assets/stylesheets/partials/_reset.css.sass */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, em, img, strong, sub, sup, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, nav, output, section, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* line 13, ../../app/assets/stylesheets/partials/_reset.css.sass */
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
+  display: block;
+}
+
+/* line 16, ../../app/assets/stylesheets/partials/_reset.css.sass */
+li {
+  list-style: none;
+}
+
+/* line 19, ../../app/assets/stylesheets/partials/_reset.css.sass */
+blockquote {
+  quotes: none;
+}
+/* line 21, ../../app/assets/stylesheets/partials/_reset.css.sass */
+blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 26, ../../app/assets/stylesheets/partials/_reset.css.sass */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: "PTSans";
+  src: url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS55F-webfont-41a2248eb6b691654d9375bbcbd5db1b.eot);
+  src: url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS55F-webfont.eot?#iefix) format("embedded-opentype"), url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS55F-webfont-be1ea5fb9420c97c1d0ff0bab0ad578e.woff) format("woff"), url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS55F-webfont-43970e4930a2fe5c51c39cfb82619d77.ttf) format("truetype"), url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS55F-webfont.svg#PTSansRegular) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "PTSans";
+  src: url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS56F-webfont-31623741f8610183f50e0deaa88ab05c.eot);
+  src: url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS56F-webfont.eot?#iefix) format("embedded-opentype"), url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS56F-webfont-946a4d3f4a30c6fb05e2e367ab3a1f1b.woff) format("woff"), url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS56F-webfont-1f0684332aa0ed19d4c536a2d0cba8af.ttf) format("truetype"), url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS56F-webfont.svg#PTSansItalic) format("svg");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "PTSans";
+  src: url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS75F-webfont-f1a9d1c4764ea8ae3939c4ae88ca7531.eot);
+  src: url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS75F-webfont.eot?#iefix) format("embedded-opentype"), url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS75F-webfont-5ea3552b733d6b1bc2801c5757655fe4.woff) format("woff"), url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS75F-webfont-395a5d54e3baba83c6a3eecc76400cd5.ttf) format("truetype"), url(//d1kbt5mjomv40p.cloudfront.net/assets/PTS75F-webfont.svg#PTSansBold) format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* line 54, ../../app/assets/stylesheets/partials/_settings.css.sass */
+.grid-a, .grid-b, .activity-text .details, .wrapup, .wrapup-books, .wrapup-cs {
+  zoom: 1;
+}
+/* line 56, ../../app/assets/stylesheets/partials/_settings.css.sass */
+.grid-a:before, .grid-b:before, .activity-text .details:before, .wrapup:before, .wrapup-books:before, .wrapup-cs:before, .grid-a:after, .grid-b:after, .activity-text .details:after, .wrapup:after, .wrapup-books:after, .wrapup-cs:after {
+  content: "";
+  display: table;
+}
+/* line 60, ../../app/assets/stylesheets/partials/_settings.css.sass */
+.grid-a:after, .grid-b:after, .activity-text .details:after, .wrapup:after, .wrapup-books:after, .wrapup-cs:after {
+  clear: both;
+}
+
+/* line 63, ../../app/assets/stylesheets/partials/_settings.css.sass */
+.logo b, .success .redo, .complete, .session-user, .sidebar-cs, .sidebar-toggle {
+  text-indent: -9999px;
+}
+
+@-webkit-keyframes pulse {
+  /* line 69, ../../app/assets/stylesheets/partials/_settings.css.sass */
+  from {
+    opacity: 1;
+  }
+
+  /* line 71, ../../app/assets/stylesheets/partials/_settings.css.sass */
+  to {
+    opacity: 0.25;
+  }
+}
+
+@-moz-keyframes pulse {
+  /* line 74, ../../app/assets/stylesheets/partials/_settings.css.sass */
+  from {
+    opacity: 1;
+  }
+
+  /* line 76, ../../app/assets/stylesheets/partials/_settings.css.sass */
+  to {
+    opacity: 0.25;
+  }
+}
+
+@-o-keyframes pulse {
+  /* line 79, ../../app/assets/stylesheets/partials/_settings.css.sass */
+  from {
+    opacity: 1;
+  }
+
+  /* line 81, ../../app/assets/stylesheets/partials/_settings.css.sass */
+  to {
+    opacity: 0.25;
+  }
+}
+
+@keyframes pulse {
+  /* line 84, ../../app/assets/stylesheets/partials/_settings.css.sass */
+  from {
+    opacity: 1;
+  }
+
+  /* line 86, ../../app/assets/stylesheets/partials/_settings.css.sass */
+  to {
+    opacity: 0.25;
+  }
+}
+
+/* line 61, ../../../../.gem/ruby/1.9.3/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+* html {
+  font-size: 106.25%;
+}
+
+/* line 64, ../../../../.gem/ruby/1.9.3/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
+html {
+  font-size: 17px;
+  line-height: 1.47059em;
+}
+
+/* line 7, ../../app/assets/stylesheets/partials/_base.css.sass */
+body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 60px;
+  right: 0;
+  color: #222222;
+  font-family: "PTSans", "Arial", "sans-serif";
+  min-width: 700px;
+  -webkit-font-smoothing: antialiased;
+}
+@media screen and (min-width: 950px) {
+  /* line 14, ../../app/assets/stylesheets/partials/_base.css.sass */
+  body.is-expanded {
+    min-width: 446px;
+    left: 254px;
+  }
+}
+
+/* line 20, ../../app/assets/stylesheets/partials/_base.css.sass */
+h1, h2, h3, h4 {
+  font-weight: bold;
+}
+
+/* line 23, ../../app/assets/stylesheets/partials/_base.css.sass */
+h1 {
+  font-size: 3.82353em;
+  line-height: 1.15385em;
+  margin-top: 0.38462em;
+  margin-bottom: 1.15385em;
+  color: #484848;
+  padding: 0 25px;
+}
+
+/* line 30, ../../app/assets/stylesheets/partials/_base.css.sass */
+h2 {
+  font-size: 1.76471em;
+  line-height: 1.66667em;
+  margin-top: 1.66667em;
+  border-bottom-style: solid;
+  border-bottom-width: 0.2em;
+  padding-bottom: 0.63333em;
+  margin-bottom: 0.83333em;
+  border-color: #d1cfca;
+  padding: 0 25px;
+}
+/* line 37, ../../app/assets/stylesheets/partials/_base.css.sass */
+h2 b {
+  float: right;
+}
+
+/* line 40, ../../app/assets/stylesheets/partials/_base.css.sass */
+h3 {
+  font-size: 0.94118em;
+  line-height: 1.5625em;
+}
+
+/* line 43, ../../app/assets/stylesheets/partials/_base.css.sass */
+h4 {
+  font-size: 0.82353em;
+  line-height: 1.78571em;
+  color: #888888;
+}
+
+/* line 47, ../../app/assets/stylesheets/partials/_base.css.sass */
+p {
+  margin-bottom: 1.47059em;
+  padding: 0 25px;
+}
+
+/* line 51, ../../app/assets/stylesheets/partials/_base.css.sass */
+pre {
+  padding-top: 1.47059em;
+  padding-bottom: 1.47059em;
+  margin-bottom: 1.47059em;
+  -webkit-transition: border-color 0.2s ease-in-out;
+  -moz-transition: border-color 0.2s ease-in-out;
+  -o-transition: border-color 0.2s ease-in-out;
+  transition: border-color 0.2s ease-in-out;
+  background: #e4dfdb;
+  background: rgba(209, 207, 202, 0.35);
+  border-color: #d1cfca;
+  overflow-x: auto;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+/* line 62, ../../app/assets/stylesheets/partials/_base.css.sass */
+pre code {
+  background: none;
+  color: #6f6f6f;
+  padding: 0;
+}
+
+/* line 70, ../../app/assets/stylesheets/partials/_base.css.sass */
+a {
+  color: #6c8580;
+  text-decoration: none;
+}
+/* line 73, ../../app/assets/stylesheets/partials/_base.css.sass */
+a:hover, a:focus {
+  text-decoration: underline;
+}
+/* line 76, ../../app/assets/stylesheets/partials/_base.css.sass */
+a img {
+  display: block;
+}
+
+/* line 79, ../../app/assets/stylesheets/partials/_base.css.sass */
+code {
+  font-size: 0.88235em;
+  line-height: 1.66667em;
+  background: rgba(234, 203, 96, 0.5);
+  color: #6f6f6f;
+  font-family: "Monaco", "Courier", "monospace";
+  padding: 0 3px;
+}
+
+/* line 86, ../../app/assets/stylesheets/partials/_base.css.sass */
+em {
+  font-style: italic;
+}
+
+/* line 89, ../../app/assets/stylesheets/partials/_base.css.sass */
+strong {
+  font-weight: bold;
+}
+
+/* line 92, ../../app/assets/stylesheets/partials/_base.css.sass */
+::selection {
+  background: rgba(162, 158, 147, 0.5);
+}
+
+/* line 95, ../../app/assets/stylesheets/partials/_base.css.sass */
+::-moz-selection {
+  background: rgba(209, 207, 202, 0.5);
+}
+
+/* line 101, ../../app/assets/stylesheets/partials/_base.css.sass */
+.course {
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-body-5c109426ce16be74cd39405e1c0e6c65.jpg) repeat;
+  background-color: #eae8e3;
+  box-shadow: inset 0 15px rgba(234, 203, 96, 0.5);
+  color: #222222;
+  font-family: "PTSans", "Arial", "sans-serif";
+  min-height: 100%;
+  padding-right: 100px;
+}
+/* line 109, ../../app/assets/stylesheets/partials/_base.css.sass */
+.lab-1 .course, .lab-4 .course, .lab-7 .course {
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-chapter-1-e8f851abe75ef77caf558104fcfffa23.png) right top no-repeat, url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-body-5c109426ce16be74cd39405e1c0e6c65.jpg) repeat;
+}
+/* line 113, ../../app/assets/stylesheets/partials/_base.css.sass */
+.lab-2 .course, .lab-5 .course, .lab-8 .course {
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-chapter-2-18bc4455c39a96ac9b69019d4869698c.png) right top no-repeat, url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-body-5c109426ce16be74cd39405e1c0e6c65.jpg) repeat;
+}
+/* line 117, ../../app/assets/stylesheets/partials/_base.css.sass */
+.lab-3 .course, .lab-6 .course {
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-chapter-3-134d84827bd08b66a84d55d90b40709a.png) right top no-repeat, url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-body-5c109426ce16be74cd39405e1c0e6c65.jpg) repeat;
+}
+/* line 120, ../../app/assets/stylesheets/partials/_base.css.sass */
+.lab-9 .course {
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-chapter-9-1af6f7741ed1975f0183419648cc8d19.png) right top no-repeat, url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-body-5c109426ce16be74cd39405e1c0e6c65.jpg) repeat;
+}
+
+/* line 123, ../../app/assets/stylesheets/partials/_base.css.sass */
+.logo {
+  font-size: 1.76471em;
+  line-height: 1.66667em;
+  margin-top: 1.66667em;
+  padding-top: 0.91667em;
+  padding-bottom: 0.75em;
+  margin-bottom: 2.5em;
+  background: #eacb60;
+  background: rgba(234, 203, 96, 0.5);
+  color: #6f6f6f;
+  letter-spacing: 0.1em;
+  max-width: 400px;
+  padding-left: 165px;
+  position: relative;
+  text-transform: uppercase;
+}
+/* line 134, ../../app/assets/stylesheets/partials/_base.css.sass */
+.logo b {
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/logo-tryr-f9b0f7973c3bd25f91cdcf538d37986b.png) no-repeat;
+  height: 154px;
+  left: 5px;
+  position: absolute;
+  top: -5px;
+  width: 144px;
+}
+
+/* line 143, ../../app/assets/stylesheets/partials/_base.css.sass */
+.inner {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+@media screen and (min-width: 900px) {
+  /* line 150, ../../app/assets/stylesheets/partials/_base.css.sass */
+  .grid-a .box-a,
+  .grid-a .box-b {
+    float: left;
+    width: 50%;
+  }
+  /* line 154, ../../app/assets/stylesheets/partials/_base.css.sass */
+  .grid-a .box-b {
+    float: right;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  /* line 160, ../../app/assets/stylesheets/partials/_base.css.sass */
+  .grid-b .box-a,
+  .grid-b .box-b,
+  .grid-b .box-c {
+    float: left;
+    width: 33.333%;
+  }
+  /* line 165, ../../app/assets/stylesheets/partials/_base.css.sass */
+  .grid-b .box-c {
+    float: right;
+  }
+}
+
+/* line 5, ../../app/assets/stylesheets/partials/_console.css.sass */
+.console {
+  -webkit-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  -o-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: #2f2f2f;
+  box-shadow: 0 0 0 10px rgba(209, 207, 202, 0);
+  overflow: auto;
+}
+/* line 10, ../../app/assets/stylesheets/partials/_console.css.sass */
+.is-active .console {
+  box-shadow: 0 0 0 10px #d1cfca;
+}
+/* line 12, ../../app/assets/stylesheets/partials/_console.css.sass */
+.is-complete .console {
+  max-height: 175px;
+}
+/* line 14, ../../app/assets/stylesheets/partials/_console.css.sass */
+.loading .console {
+  background: #3c3c3c url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-loading-b58a12dc6cfaf79a6c002ee4cd587fa2.gif) center no-repeat;
+  box-shadow: 0 0 0 10px rgba(163, 180, 177, 0.5);
+}
+
+/* line 18, ../../app/assets/stylesheets/partials/_console.css.sass */
+.jquery-console-inner {
+  font-size: 0.88235em;
+  line-height: 1.66667em;
+  color: white;
+  cursor: text;
+  font-family: "Monaco", "Courier", "monospace";
+  padding: 25px;
+  position: relative;
+}
+
+/* line 26, ../../app/assets/stylesheets/partials/_console.css.sass */
+.jquery-console-focus .jquery-console-cursor {
+  -webkit-animation: pulse 1s alternate infinite;
+  -moz-animation: pulse 1s alternate infinite;
+  -o-animation: pulse 1s alternate infinite;
+  animation: pulse 1s alternate infinite;
+  background: #eacb60;
+  color: #555555;
+}
+
+/* line 34, ../../app/assets/stylesheets/partials/_console.css.sass */
+.jquery-console-message {
+  color: #b9b6af;
+}
+
+/* line 37, ../../app/assets/stylesheets/partials/_console.css.sass */
+.jquery-console-error-message {
+  color: #d55e4a;
+}
+
+/* line 5, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercises {
+  margin: 0 auto;
+  max-width: 53em;
+  padding: 25px;
+  padding-bottom: 200px;
+}
+
+/* line 11, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise {
+  margin-bottom: 1.47059em;
+  opacity: 0;
+  position: relative;
+}
+/* line 18, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-hidden {
+  display: none;
+}
+/* line 23, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-complete {
+  opacity: 1;
+  top: 0;
+}
+/* line 26, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-complete .example {
+  display: none;
+}
+/* line 28, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-complete .success {
+  display: block;
+}
+/* line 30, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-complete .activity {
+  display: none;
+}
+/* line 33, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-complete.has-resource .activity {
+  display: block;
+}
+/* line 35, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-complete.has-resource .console {
+  display: none;
+}
+/* line 42, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-inactive .success pre {
+  background: rgba(209, 207, 202, 0.35);
+  box-shadow: 0 0 0 10px rgba(209, 207, 202, 0);
+  top: 0;
+}
+/* line 46, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-inactive .success code {
+  color: #6f6f6f;
+}
+/* line 51, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-active {
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+/* line 54, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-active .example {
+  display: block;
+}
+/* line 56, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-active .success {
+  display: none;
+}
+/* line 58, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-active .activity {
+  display: block;
+}
+/* line 61, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-active.has-resource .console {
+  display: block;
+  height: 350px;
+  max-height: 350px;
+}
+@media screen and (min-width: 850px) {
+  /* line 61, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+  .exercise.is-active.has-resource .console {
+    width: 49%;
+  }
+}
+/* line 67, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise.is-active.has-resource .responses {
+  margin-top: 1.47059em;
+}
+@media screen and (min-width: 850px) {
+  /* line 67, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+  .exercise.is-active.has-resource .responses {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: 0;
+    margin-top: 0;
+    width: 49%;
+  }
+  /* line 73, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+  .exercise.is-active.has-resource .responses li {
+    height: 100%;
+  }
+  /* line 75, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+  .exercise.is-active.has-resource .responses svg {
+    height: 100%;
+  }
+}
+/* line 81, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.exercise:last-child .activity {
+  display: block;
+}
+
+/* line 89, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.activity {
+  display: none;
+  position: relative;
+}
+
+/* line 93, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.success {
+  position: relative;
+  z-index: 1;
+}
+/* line 98, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.success:hover .complete, .success:focus .complete {
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+  opacity: 0;
+}
+/* line 102, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.success:hover .redo, .success:focus .redo {
+  opacity: 0.35;
+}
+/* line 104, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.success pre {
+  -webkit-transition: background-color 1.25s 0.5s, box-shadow 1.25s 0.5s, top 0.35s ease-in-out;
+  -webkit-transition-delay: ease-in-out, ease-in-out, 0s;
+  -moz-transition: background-color 1.25s 0.5s ease-in-out, box-shadow 1.25s 0.5s ease-in-out, top 0.35s ease-in-out;
+  -o-transition: background-color 1.25s 0.5s ease-in-out, box-shadow 1.25s 0.5s ease-in-out, top 0.35s ease-in-out;
+  transition: background-color 1.25s 0.5s ease-in-out, box-shadow 1.25s 0.5s ease-in-out, top 0.35s ease-in-out;
+  background-color: #2f2f2f;
+  box-shadow: 0 0 0 10px #d1cfca;
+}
+/* line 108, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.success pre code {
+  -webkit-transition: color 1.5s 0.25s;
+  -webkit-transition-delay: ease-in-out;
+  -moz-transition: color 1.5s 0.25s ease-in-out;
+  -o-transition: color 1.5s 0.25s ease-in-out;
+  transition: color 1.5s 0.25s ease-in-out;
+  color: white;
+}
+/* line 111, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.example + .success pre {
+  position: relative;
+  top: 50px;
+}
+/* line 114, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.success .redo {
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/icn-redo-d0a82a93850fdb7df3a0ed0bc6eeedc2.png) center no-repeat;
+  display: block;
+  height: 36px;
+  opacity: 0;
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  width: 31px;
+  z-index: 1;
+}
+/* line 126, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.success .redo:hover, .success .redo:focus {
+  opacity: 1;
+}
+
+/* line 130, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.complete {
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transition: all 0.4s 0.75s;
+  -webkit-transition-delay: ease-in-out;
+  -moz-transition: all 0.4s 0.75s ease-in-out;
+  -o-transition: all 0.4s 0.75s ease-in-out;
+  transition: all 0.4s 0.75s ease-in-out;
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/icn-complete-f522790f05318df0385ce029e21886d0.png) no-repeat;
+  display: block;
+  height: 46px;
+  opacity: 0;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  width: 43px;
+}
+/* line 142, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.is-inactive .complete {
+  -webkit-transform: none;
+  -moz-transform: none;
+  -ms-transform: none;
+  -o-transform: none;
+  transform: none;
+  opacity: 1;
+}
+
+/* line 149, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.responses svg {
+  display: block;
+  max-height: 500px;
+  max-width: 100%;
+  width: 100%;
+}
+
+/* line 157, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.next, .example code {
+  font-size: 1.17647em;
+  line-height: 1.25em;
+  line-height: 2.5em;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+  background: #d1cfca url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-next-31f755a2eb7f31088703bce96c03dad3.jpg) center no-repeat;
+  border-radius: 4px;
+  box-shadow: inset 0 -1px rgba(0, 0, 0, 0.14), inset 0 1px white, 0 2px 8px rgba(0, 0, 0, 0.14);
+  color: #484848;
+  display: block;
+  font-weight: bold;
+  opacity: 0.75;
+  padding: 0 25px;
+}
+/* line 169, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.next:hover, .example code:hover, .next:focus, .example code:focus {
+  opacity: 1;
+  text-decoration: none;
+}
+
+/* line 174, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.example code {
+  font-size: 0.94118em;
+  line-height: 1.5625em;
+  line-height: 1.5625em;
+  background-position: 0 0;
+  display: inline-block;
+  font-weight: normal;
+}
+/* line 181, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.example code:after {
+  display: none;
+}
+
+/* line 186, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.meta {
+  margin-bottom: 1.47059em;
+  float: right;
+  margin-left: 25px;
+}
+/* line 190, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.meta li {
+  margin-bottom: 1.47059em;
+  border-bottom-style: solid;
+  border-bottom-width: 0.05882em;
+  padding-bottom: 1.41176em;
+  border-color: #d1cfca;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+/* line 196, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.meta li:last-child {
+  border: 0;
+  margin: 0;
+  padding-bottom: 0;
+}
+/* line 200, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.meta .meta-badge {
+  position: relative;
+}
+/* line 202, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.meta .meta-badge:after {
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/icn-locked-00137c823a11e2d2fc16aec7314c849b.png) no-repeat;
+  content: "";
+  display: block;
+  height: 19px;
+  left: 66px;
+  position: absolute;
+  top: 32px;
+  width: 14px;
+}
+/* line 211, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.meta .meta-badge h4 {
+  line-height: 1.42857em;
+  float: right;
+  margin: 0;
+  padding-top: 8px;
+  width: 105px;
+}
+/* line 217, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.meta .meta-badge img {
+  opacity: 0.5;
+  -webkit-filter: grayscale(50%);
+  filter: grayscale(50%);
+}
+/* line 221, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.meta h4 {
+  margin-bottom: 0.89286em;
+}
+
+/* line 229, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-sponsor {
+  margin-bottom: 1.47059em;
+  background: rgba(209, 207, 202, 0.35);
+  padding: 25px;
+}
+/* line 233, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-sponsor h3 {
+  font-size: 1.17647em;
+  line-height: 1.25em;
+  margin-bottom: 0.625em;
+}
+/* line 236, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-sponsor p {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 240, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-badge {
+  margin-bottom: 1.47059em;
+  float: right;
+  margin-left: 25px;
+  text-align: center;
+}
+/* line 245, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-badge img {
+  margin-bottom: 0.73529em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 250, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-badge h4 {
+  border-top-style: solid;
+  border-top-width: 0.07143em;
+  padding-top: 0.82143em;
+  margin-bottom: 0.17857em;
+  border-color: #d1cfca;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+/* line 257, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-books {
+  margin-bottom: 1.47059em;
+}
+/* line 260, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-books li {
+  float: left;
+  width: 33.333%;
+}
+/* line 263, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-books a {
+  display: block;
+  margin: 0 25px;
+}
+/* line 266, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-books img {
+  border: 1px solid #d1cfca;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* line 273, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-cs li {
+  margin-bottom: 1.47059em;
+  float: left;
+}
+/* line 276, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-cs a {
+  display: block;
+  margin: 0 25px;
+}
+/* line 279, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-cs a:hover, .wrapup-cs a:focus {
+  text-decoration: none;
+}
+/* line 282, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-cs img {
+  border: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+/* line 286, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+.wrapup-cs b {
+  font-size: 0.82353em;
+  line-height: 1.78571em;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 55px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+@media screen and (min-width: 815px) {
+  /* line 286, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+  .wrapup-cs b {
+    font-size: 1.05882em;
+    line-height: 1.38889em;
+  }
+}
+@media screen and (min-width: 950px) {
+  /* line 286, ../../app/assets/stylesheets/partials/_exercise.css.sass */
+  .wrapup-cs b {
+    font-size: 1.41176em;
+    line-height: 2.08333em;
+  }
+}
+
+/* line 6, ../../app/assets/stylesheets/partials/_home.css.sass */
+.home .course {
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-home-74285a673755ff9aeb836f7c01d2afc3.png) right top no-repeat, url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-body-5c109426ce16be74cd39405e1c0e6c65.jpg) repeat;
+  padding-right: 0;
+}
+/* line 9, ../../app/assets/stylesheets/partials/_home.css.sass */
+.home .exercises {
+  padding-bottom: 1px;
+}
+/* line 11, ../../app/assets/stylesheets/partials/_home.css.sass */
+.home h1 {
+  margin-bottom: 0.38462em;
+  text-align: center;
+}
+@media screen and (min-width: 950px) {
+  /* line 11, ../../app/assets/stylesheets/partials/_home.css.sass */
+  .home h1 {
+    text-align: left;
+  }
+}
+
+/* line 17, ../../app/assets/stylesheets/partials/_home.css.sass */
+.home-meta {
+  margin-top: 1.47059em;
+  float: none;
+  margin-bottom: 0;
+  text-align: center;
+}
+/* line 22, ../../app/assets/stylesheets/partials/_home.css.sass */
+.home-meta li {
+  border: 0;
+  display: inline-block;
+  padding-bottom: 0;
+}
+@media screen and (min-width: 950px) {
+  /* line 17, ../../app/assets/stylesheets/partials/_home.css.sass */
+  .home-meta {
+    float: right;
+    text-align: left;
+  }
+  /* line 29, ../../app/assets/stylesheets/partials/_home.css.sass */
+  .home-meta li {
+    border-bottom-style: solid;
+    border-bottom-width: 0.05882em;
+    padding-bottom: 1.41176em;
+    border-color: #d1cfca;
+    display: block;
+  }
+}
+
+/* line 34, ../../app/assets/stylesheets/partials/_home.css.sass */
+.home-sharing {
+  margin-bottom: 1.47059em;
+  padding: 0 25px;
+}
+/* line 37, ../../app/assets/stylesheets/partials/_home.css.sass */
+.home-sharing .twitter-share-button {
+  margin-left: 10px;
+  position: relative;
+  top: 5px;
+}
+/* line 41, ../../app/assets/stylesheets/partials/_home.css.sass */
+.home-sharing .fb-like {
+  margin-left: 10px;
+}
+
+/* line 45, ../../app/assets/stylesheets/partials/_home.css.sass */
+.home-contents li {
+  margin-bottom: 0.73529em;
+  list-style: decimal;
+  margin-left: 2em;
+}
+
+/* line 51, ../../app/assets/stylesheets/partials/_home.css.sass */
+.home-badges li {
+  float: left;
+  margin-right: 10px;
+}
+
+/* line 5, ../../app/assets/stylesheets/partials/_progress.css.sass */
+.progress {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-progress-8a279110e0ce2700a60832f3274ad8cf.jpg) repeat-y;
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-progress-start-92e697e4d717564ae076f14e878f68d2.png) center 10px no-repeat, url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-progress-bottom-65a71ada5795ead2b587b27a47f561d6.jpg) bottom left no-repeat, url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-progress-8a279110e0ce2700a60832f3274ad8cf.jpg) repeat-y;
+  background-color: #a2b3b0;
+  border-left: 10px solid #d1cfca;
+  box-shadow: inset 2px 0 2px rgba(0, 0, 0, 0.15);
+  padding: 72px 10px 10px;
+  position: fixed;
+  width: 70px;
+  z-index: 10;
+}
+/* line 16, ../../app/assets/stylesheets/partials/_progress.css.sass */
+.progress ol {
+  height: 100%;
+}
+/* line 18, ../../app/assets/stylesheets/partials/_progress.css.sass */
+.progress li {
+  height: 12.5%;
+  max-height: 105px;
+}
+/* line 21, ../../app/assets/stylesheets/partials/_progress.css.sass */
+.progress img {
+  display: block;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  margin: 0 auto;
+  max-height: 100%;
+  max-width: 100%;
+  opacity: 0.4;
+}
+/* line 29, ../../app/assets/stylesheets/partials/_progress.css.sass */
+.progress .is-complete img {
+  -webkit-filter: none;
+  filter: none;
+  opacity: 1;
+}
+
+/* line 35, ../../app/assets/stylesheets/partials/_progress.css.sass */
+.lab-1 .progress-1 img {
+  -webkit-filter: none;
+  filter: none;
+}
+
+/* line 35, ../../app/assets/stylesheets/partials/_progress.css.sass */
+.lab-2 .progress-2 img {
+  -webkit-filter: none;
+  filter: none;
+}
+
+/* line 35, ../../app/assets/stylesheets/partials/_progress.css.sass */
+.lab-3 .progress-3 img {
+  -webkit-filter: none;
+  filter: none;
+}
+
+/* line 35, ../../app/assets/stylesheets/partials/_progress.css.sass */
+.lab-4 .progress-4 img {
+  -webkit-filter: none;
+  filter: none;
+}
+
+/* line 35, ../../app/assets/stylesheets/partials/_progress.css.sass */
+.lab-5 .progress-5 img {
+  -webkit-filter: none;
+  filter: none;
+}
+
+/* line 35, ../../app/assets/stylesheets/partials/_progress.css.sass */
+.lab-6 .progress-6 img {
+  -webkit-filter: none;
+  filter: none;
+}
+
+/* line 35, ../../app/assets/stylesheets/partials/_progress.css.sass */
+.lab-7 .progress-7 img {
+  -webkit-filter: none;
+  filter: none;
+}
+
+/* line 35, ../../app/assets/stylesheets/partials/_progress.css.sass */
+.lab-8 .progress-8 img {
+  -webkit-filter: none;
+  filter: none;
+}
+
+/* line 5, ../../app/assets/stylesheets/partials/_session.css.sass */
+.session {
+  display: none;
+  left: 50px;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  width: 143px;
+  z-index: 20;
+}
+/* line 13, ../../app/assets/stylesheets/partials/_session.css.sass */
+.session a {
+  font-size: 0.70588em;
+  line-height: 2.08333em;
+  color: #cecece;
+  float: right;
+  font-weight: bold;
+  line-height: 30px;
+}
+/* line 19, ../../app/assets/stylesheets/partials/_session.css.sass */
+.session a:hover, .session a:focus {
+  color: white;
+  text-decoration: underline;
+}
+/* line 23, ../../app/assets/stylesheets/partials/_session.css.sass */
+.is-expanded .session {
+  display: block;
+}
+
+/* line 25, ../../app/assets/stylesheets/partials/_session.css.sass */
+.session-user {
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/icn-session-29fa3eac8286233655c9f69ca7f1488b.png) 0 center no-repeat;
+  display: inline-block;
+  height: 30px;
+  margin-right: 5px;
+  width: 18px;
+}
+/* line 32, ../../app/assets/stylesheets/partials/_session.css.sass */
+.session-user:hover, .session-user:focus {
+  background-position: -18px center;
+}
+
+/* line 5, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: auto;
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-sidebar-footer-34523907d7bd08003336d6ea5e90babe.png) right bottom no-repeat, url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-sidebar-0ca56714bf607607f3891d52156a9d25.png) right top repeat-y;
+  background-color: #1e1e1e;
+  border-right: 10px solid #d1cfca;
+  position: fixed;
+  width: 50px;
+  z-index: 10;
+}
+/* line 13, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar header {
+  background: #111111 url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-sidebar-header-941e74ab21c35c44a78105829d2757d1.jpg) right top no-repeat;
+  height: 30px;
+  padding: 10px 9px;
+}
+/* line 17, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.is-expanded .sidebar {
+  width: 244px;
+}
+
+/* line 20, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-cs {
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/logo-codeschool-6b319d55bcd2f87c66082fd7fcf3a0fa.png) no-repeat;
+  display: none;
+  height: 30px;
+  opacity: 0.8;
+  width: 31px;
+}
+/* line 28, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-cs:hover, .sidebar-cs:focus {
+  opacity: 1;
+}
+/* line 31, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.is-expanded .sidebar-cs {
+  display: block;
+}
+
+/* line 34, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-toggle {
+  -webkit-transition: opacity 0.2s ease-in-out;
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
+  background: #111111 url(//d1kbt5mjomv40p.cloudfront.net/assets/icn-toggle-93d2ec92159ed1ba41546082f6b63294.png) 0 -50px no-repeat;
+  border-radius: 0 0 4px;
+  display: block;
+  height: 50px;
+  opacity: 0.6;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+}
+/* line 46, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-toggle:hover, .sidebar-toggle:focus {
+  opacity: 1;
+}
+/* line 49, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.is-expanded .sidebar-toggle {
+  background-position: 0 0;
+  box-shadow: inset 5px 0 5px rgba(0, 0, 0, 0.25), -1px 0 rgba(255, 255, 255, 0.03);
+  opacity: 1;
+  right: -10px;
+}
+
+/* line 58, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-levels {
+  margin-top: 1.47059em;
+}
+/* line 60, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-levels h3 a {
+  color: #cecece;
+  display: block;
+  padding: 0 10px;
+  text-align: center;
+}
+/* line 65, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-levels h3 a:hover, .sidebar-levels h3 a:focus {
+  color: white;
+}
+@media screen and (min-height: 710px) {
+  /* line 60, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+  .sidebar-levels h3 a {
+    font-size: 1.17647em;
+    line-height: 1.25em;
+    padding-top: 0.6875em;
+    padding-bottom: 0.5625em;
+  }
+}
+/* line 72, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-levels h3 b {
+  display: none;
+}
+/* line 75, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-levels > .inactive h3 a {
+  color: #8a8578;
+}
+/* line 77, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-levels > .inactive h3 a:hover, .sidebar-levels > .inactive h3 a:focus {
+  color: #a29e93;
+}
+/* line 80, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-levels > .active {
+  background: white url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-sidebar-active-93df47477b9df5afb46a02890e0ef749.jpg) 0 0 repeat-y;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+/* line 84, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-levels > .active:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: auto;
+  right: -10px;
+  background: white url(//d1kbt5mjomv40p.cloudfront.net/assets/bg-sidebar-active-border-11d6941c0325b7a7fa0b59afef74a3e2.png) 0 0 repeat-y;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.25);
+  content: "";
+  display: block;
+  width: 10px;
+}
+/* line 91, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-levels > .active h3 a {
+  color: #555555;
+  cursor: default;
+}
+/* line 94, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-levels > .active h3 a:hover, .sidebar-levels > .active h3 a:focus {
+  color: #555555;
+  text-decoration: none;
+}
+/* line 99, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.is-expanded .sidebar-levels h3 a {
+  text-align: left;
+}
+/* line 101, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.is-expanded .sidebar-levels h3 b {
+  display: inline;
+}
+
+/* line 106, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-sections {
+  display: none;
+  padding-bottom: 1px;
+}
+/* line 109, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-sections li {
+  margin-bottom: 0.36765em;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+}
+/* line 115, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-sections li.inactive h4, .sidebar-sections li.inactive b {
+  color: #aeaeae;
+}
+/* line 117, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-sections li.inactive b {
+  background: url(//d1kbt5mjomv40p.cloudfront.net/assets/icn-cleared-07387dc8062065d0905e2652205c9ccd.png) right center no-repeat;
+  padding-right: 15px;
+}
+/* line 121, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-sections li.active h4, .sidebar-sections li.active b {
+  color: #222222;
+}
+/* line 123, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+.sidebar-sections b {
+  font-size: 0.70588em;
+  line-height: 2.08333em;
+  color: #888888;
+  position: absolute;
+  right: 10px;
+  top: 0;
+}
+@media screen and (min-height: 530px) {
+  /* line 130, ../../app/assets/stylesheets/partials/_sidebar.css.sass */
+  .is-expanded .sidebar-sections {
+    display: block;
+  }
+}
+
+/* line 31, ../../app/assets/stylesheets/application.css.sass */
+#score,
+.score,
+.notifications {
+  display: none;
+}

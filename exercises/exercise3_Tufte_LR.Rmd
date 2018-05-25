@@ -1,0 +1,61 @@
+---
+title: "Exercise Data-Ink Ratio"
+author: "Lisa Reiber"
+date: "27 11 2017"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r visa, message=FALSE}
+#Load Packages
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load(dplyr, ggplot2, directlabels) 
+
+#Get Data
+nobel <- read.csv(file = "data/nobel.csv")
+nobel_plot <- nobel %>% filter(gender != "org", category != "") 
+```
+\newpage
+#Question 2
+Try to increase the data-ink ratio to a degree that the figure (of your choice) is still legible but sparse in regard to non data-ink. 
+
+## Answer 2:
+```{r}
+# 1. Pre: Nobel Prizes by year over gender
+p1a <- ggplot(data = nobel_plot, mapping = aes(x = year, fill = category)) +
+      geom_histogram(position = "stack", binwidth = 5) +
+      facet_wrap(c("gender"), scales = , dir = "v") +
+      scale_x_continuous(breaks = seq(1900, 2010, 10), limits = c(1900, 2020)) +
+      labs(title ="Number of Nobel Prizes from 1901 to 2017 by Gender ",
+           y= "Number of Nobel Prizes", x = "")
+p1a
+```
+\newpage
+
+```{r}
+# 1. Post: Nobel Prizes by year over gender
+p1b <- ggplot(data = nobel_plot, 
+              aes(x = year, color = gender, label = gender)) +
+      geom_freqpoly(stat = "bin", binwidth = 1) +
+      labs(title ="Number of Nobel Prizes from 1901 to 2017 \nby Gender ",
+           y= "", x = "")  +
+      geom_dl(method=list("get.means", 
+                          hjust = 3.3 , vjust= -4, 
+                          cex=0.8, rot = 10) , 
+              stat = "bin", binwidth = 1)
+
+p1b + theme(plot.title = element_text(hjust = 0.5),
+            panel.background = element_blank(),
+            axis.line = element_line(colour = "black"),
+            legend.position = "none")
+```
+
+```{r not include, include=FALSE}
+### not used
+# mutate(cut_yrs = cut(year, breaks = c(-Inf,1950,2000, Inf), dig.lab = 4,
+#                       labels = c("1901-1959", "1951-2000", "2001-2017")))
+```
+

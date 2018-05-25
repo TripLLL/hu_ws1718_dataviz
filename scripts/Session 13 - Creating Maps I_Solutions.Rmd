@@ -1,0 +1,284 @@
+---
+title: "Session 13 - Creating Maps I"
+author: "Fabian Gülzau"
+date: "25 Januar 2018"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r echo = FALSE, eval = TRUE, message = FALSE}
+library(tidyverse)
+library(ggmap)
+```
+
+## Programm
+
+1. Einleitung
+2. Arbeitsbeispiel: John Snow - Cholerakarte
+3. Das Paket: ggmap
+4. Cholera Map mit R
+5. Weitere Funktionen
+
+## 1. Einleitung
+
+Karten spielen schon seit Beginn eine Rolle im Feld der "Visualisierungen":
+
+```{r echo = FALSE, out.width = '80%'}
+knitr::include_graphics("C:/Users/User/HU-Box/Seafile/Meine Bibliothek/Seminare/WS 2017/Sessions/Session 3/Minard.png")
+```
+
+## 1. Einleitung
+
+> "*Spatial data* are everywhere" (Bivand et al. 2008: 1)
+
+- Technologien (GPS, Satelliten)
+- "Spatial data" als Produkt (Google Maps)
+- Bedeutungsgewinn auch in der Soziologie erwartet (Diekmann 2016)
+
+-> Geographical Information Systems (GIS) 
+
+## R und GIS / R als GIS
+
+R und GIS:
+
+- [Vielzahl an Paketen](https://cran.r-project.org/web/views/Spatial.html)
+- Paket [sp](https://cran.r-project.org/web/packages/sp/index.html) implementiert eigene Datenklassen (S4-Implementation)
+
+**Problem**: voraussetzungsvoll (GIS, R)
+
+```{r echo = FALSE, out.width = '85%'}
+knitr::include_graphics("C:/Users/User/HU-Box/Seafile/Meine Bibliothek/R/Courses/Applied Spatial Analysis with R/Tree of packages using sp_Bivand et al 2008 - 5.png")
+```
+
+## Vorgehen
+
+- Diskussion des Pakets [ggmap](https://cran.r-project.org/web/packages/ggmap/ggmap.pdf)
+- Weitgehender Verzicht auf Fachtermini
+
+**Ziel**: Karten erstellen und zusätzliche Daten mit ggplot2 ergänzen 
+
+## 2. Arbeitsbeispiel: John Snow - Cholera Map
+
+Der Mediziner John Snow konnte 1854 eine Choleraepidemie eindämmen und zeigen, dass die Krankheit nicht, wie angenommen, über die Luft übertragen wird, sondern durch verunreinigtes Wasser.
+
+Tufte (1997: 29-32) hebt positiv hervor, dass Snow:
+
+- Ursache und Effekt in Zusammenhang stellt
+- passende Vergleichsgruppen heranzieht
+- alternative Erklärungen prüft
+- Unsicherheiten nennt
+
+## 2. Arbeitsbeispiel: John Snow - Cholerakarte
+
+```{r echo = FALSE, out.width = '80%'}
+knitr::include_graphics("C:/Users/User/HU-Box/Seafile/Meine Bibliothek/Seminare/WS 2017/Sessions/Session 13/SnowMap.png")
+```
+
+Quelle: Tufte (1997: 30f.).
+
+## 3. Das Paket: ggmap
+
+[ggmap](https://journal.r-project.org/archive/2013-1/kahle-wickham.pdf) (Kahle & Wickham 2013) basiert auf dem "Grammar of Graphics", wie es in ggplot2 implementiert ist.
+
+Die Logik ist folgendermaßen:
+
+1. Karte herunterladen (`get_map()`)
+2. Karte als Kontextlayer in ggplot2 verwenden (`ggmap()`)
++ x/y als Längen- und Breitengrade fixiert
+3. Weitere Layer über ggplot2 ergänzen (etwa `geom_point`)
+
+**Anmerkung**:
+Sogenannte Shapefiles können zudem über über `fortify` in data.frames transformiert werden. 
+
+## 4. Cholerakarte mit R
+
+Im Folgenden werden wir die o.g. Schritte einsetzen, um die Karte aus (Tufte 1997: 30f.) mit R zu rekonstruieren. 
+
+Hierfür benötigen wir:
+
+- die Pakete `tidyverse` (u.a. ggplot2) und `ggmap`
+- die Datensätze `death` und `pump` aus dem Moodlekurs
+
+Pakete:
+```{r echo = TRUE, eval = FALSE}
+install.packages("ggmap")
+
+# Falls dies nicht klappt:
+install.packages("devtools")
+devtools::install_github("dkahle/ggmap")
+
+library(tidyverse)
+library(ggmap)
+library(cowplot)
+```
+
+Daten ([Quelle](http://blog.rtwilson.com/john-snows-cholera-data-in-more-formats/)):
+
+```{r echo = TRUE, eval = TRUE}
+death <- readRDS(file = "C:\\Users\\User\\HU-Box\\Seafile\\Meine Bibliothek\\Seminare\\WS 2017\\Sessions\\Session 13\\Death")
+pump <- readRDS(file = "C:\\Users\\User\\HU-Box\\Seafile\\Meine Bibliothek\\Seminare\\WS 2017\\Sessions\\Session 13\\Pump")
+```
+
+## 4. Cholerakarte mit R: Daten
+
+Die Daten:
+
+```{r echo = TRUE, eval = TRUE}
+glimpse(death)
+glimpse(pump)
+```
+
+
+## 5. Cholerakarte mit R: get_map
+
+ggmap bietet mit `get_map` mehrere Möglichkeiten Karten herunterzuladen. 
+
+`get_map()` hat u.a. folgende Argumente:
+
+- location (address, lon/lat, bbox)
+- zoom (3[continent]-21[building])
+- [maptype](https://rpubs.com/jiayiliu/ggmap_examples) (s. ?get_map)
+- source (u.a. GoogleMaps [google], OpenStreetMap [osm], Stamen Maps [stamen])
+
+## 5. Cholerakarte mit R: get_map
+
+```{r echo = TRUE, eval = TRUE}
+# Google
+snow.map.ggl <- readRDS("C:\\Users\\User\\HU-Box\\Seafile\\Meine Bibliothek\\Seminare\\WS 2017\\Sessions\\Session 13\\snowmapggl")
+
+# Stamen
+snow.map.stm <- readRDS("C:\\Users\\User\\HU-Box\\Seafile\\Meine Bibliothek\\Seminare\\WS 2017\\Sessions\\Session 13\\snowmapstm")
+
+# Google (Satellite)
+snow.map.ggl.sat <- readRDS("C:\\Users\\User\\HU-Box\\Seafile\\Meine Bibliothek\\Seminare\\WS 2017\\Sessions\\Session 13\\snowmapgglsat")
+
+# Stamen (toner)
+snow.map.stm.ton <- readRDS("C:\\Users\\User\\HU-Box\\Seafile\\Meine Bibliothek\\Seminare\\WS 2017\\Sessions\\Session 13\\snowmapstmton")
+```
+
+Anwendung von get_map:
+
+```{r echo = TRUE, eval = FALSE}
+# Google Map
+snow.map.ggl <- get_map(location = "Soho, London",
+                    zoom = 16,
+                    source = "google",
+                    maptype = "terrain")
+
+# Stamen Map
+snow.map.stm <- get_map("Soho, London",
+                        zoom = 16, 
+                        maptype="terrain", 
+                        source = "stamen")
+```
+
+## 5. Cholerakarte mit R: Base Map
+
+Die Karten lassen sich nun mit der Funktion `ggmap` in einen Layer für ggplot2 überführen:
+
+```{r echo = TRUE, eval = FALSE}
+gg.map.ggl <- ggmap(snow.map.ggl)
+gg.map.stm <- ggmap(snow.map.stm)
+
+# Kombinieren und plotten (cowplot)
+plots <- list(gg.map.ggl, gg.map.stm) 
+
+library(cowplot)
+plot_grid(plotlist = plots, ncol = 2, labels = c("Google Maps", "Stamen Maps"))
+```
+
+Demonstration weiterer Basiskarten (Funktion wird nicht angezeigt):
+
+```{r echo = TRUE, eval = TRUE, message = FALSE}
+library(cowplot)
+gg.map.ggl <- ggmap(snow.map.ggl) + theme_void()
+gg.map.stm <- ggmap(snow.map.stm) + theme_void()
+gg.map.ggl.sat <- ggmap(snow.map.ggl.sat) + theme_void()
+gg.map.stm.ton <- ggmap(snow.map.stm.ton) + theme_void()
+
+plots <- list(gg.map.ggl, gg.map.stm, gg.map.ggl.sat, gg.map.stm.ton) 
+
+plot_grid(plotlist = plots, nrow = 2, ncol = 2, 
+          labels = c(
+            "Google\n(Terrain)", 
+            "Stamen\n(Terrain)", 
+            "Google\n(Satellite)", 
+            "Stamen\n(Toner)"), 
+          label_size = 10, hjust = 0.03, vjust = 1.3)
+```
+
+## 6. Cholerakarte mit R: Weitere Layer
+
+Nun lassen sich mit den bekannten ggplot2-Funktionen weitere Layer ergänzen. Könnt ihr die Punkte und Pumpen hinzufügen? Hier ist ein Codeschnipsel als Hinweis:
+
+```{r echo = TRUE, eval = FALSE}
+gg.map.stm +          # Basiskarte
+  geom_point(...) +   # Layer für Todesfälle
+  geom_point(...) +   # Layer für Pumpen
+  theme_void() +      # theme_void, um Achsenbeschriftung zu vermeiden
+  labs(...)           # Titel, Caption
+```
+
+```{r echo = TRUE, eval = TRUE}
+gg.map.stm + 
+  geom_point(data = death, aes(x = lon, y = lat, size = count)) +
+  geom_point(data = pump, aes(x = lon, y = lat), color = "red", stroke = 4, shape = 4) +
+  theme_void() + 
+  labs(title = "Reproduction of John Snow's Cholera Map",
+       size = "Cholera Deaths",
+       caption = "Data: http://blog.rtwilson.com/john-snows-cholera-data-in-more-formats/")
+```
+
+## 5. Weitere Funktionen
+
+ggmap enthält zudem weitere hilfreiche Funktionen:
+
+- Adressen geokodieren oder Längen- und Breitengrade in Adressen umwandelt werden:
+
+```{r echo = TRUE, eval = FALSE, message = FALSE, warning = FALSE}
+# Query limit = 2,500 (a day)
+ISW <- geocode(location = "Universitaetsstr. 3b, Berlin", source = "google")
+
+# The other way aroung
+revgeocode(location = c(ISW$lon, ISW$lat), source = "google", output = "address")
+```
+
+## 5. Weitere Funktionen
+
+Mit Hilfe von ggfortify können shapefiles verwendet werden:
+
+```{r echo = TRUE, eval = TRUE}
+# Map of berlin (get_map)
+berlin <- readRDS(file = "C:\\Users\\User\\HU-Box\\Seafile\\Meine Bibliothek\\Seminare\\WS 2017\\Sessions\\Session 13\\BerlinMap")
+```
+
+`get_map`, um eine Karte von Berlin zu erhalten:
+
+```{r echo = TRUE, eval = FALSE}
+berlin <- get_map(location = "Berlin",
+                  zoom = 10,
+                  maptype = "toner",
+                  source = "stamen")
+```
+
+Shapefile vorbereiten und als Layer verwenden: 
+
+```{r echo = TRUE, eval = TRUE, message = FALSE, warning = FALSE}
+library(rgdal)
+
+# Shapefiles (Source: https://daten.berlin.de/datensaetze/rbs-bezirke-dezember-2016)
+berlin.shp <- readOGR(dsn = "C:/Users/User/HU-Box/Seafile/Meine Bibliothek/Seminare/WS 2017/Sessions/Session 13/RBS-Berlin") %>%
+                      spTransform(CRS("+proj=longlat +datum=WGS84"))
+
+# Fortify to plot with ggplot2
+berlin.fshp <- fortify(berlin.shp)
+
+# Plot map and overlay with shapefile
+ggmap(berlin) +
+  geom_polygon(data = berlin.fshp, mapping = aes(x = long, y = lat, group = group),
+               color = "blue", fill = "black", alpha = .4)
+```
+
