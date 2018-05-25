@@ -1,5 +1,5 @@
 # hu_dataviz
-University course on data visualization by Fabian Gülzau (ghithub:[FabianFox](https://github.com/FabianFox)) at Institute of Social Sciences Winter Term 17/18. 
+University course on data visualization by Fabian Gülzau (github:[FabianFox](https://github.com/FabianFox)) at Institute of Social Sciences Winter Term 17/18. 
 
 The course had three main goals [description from course website]:
 - Students should get an introduction to the statistical programming language R. Due to time limitations and the broadness of topics associated with R this won't be possible in an extensive manner. However, after the course students should be able to explore R further and conduct analysis on their own.
