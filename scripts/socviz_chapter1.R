@@ -9,6 +9,6 @@ library(tibble)
 # alt and minus make the arrow (shortcut)
 
 # load data
-url <- "https://cdn.rawgit.com/kjhealy/viz-organdata/master/organdonation.csv"
+url <- "https://cdn.jsdelivr.net/gh/kjhealy/viz-organdata/organdonation.csv"
 
 organs <- read_csv(file = url)
